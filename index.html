@@ -39,11 +39,11 @@
             transition: grid-template-rows 5s;
         }
 
-        
+
         nav {
             background-color: #FDFAF6;
             grid-area: sidebar;
-            border-right: 2px solid #45505265;
+            border-right: 3px solid #45505265;
             /* box-shadow: 0px 1px 0px 1px black; */
 
         }
@@ -102,7 +102,7 @@
             flex-direction: column;
         }
 
-        nav h1{
+        nav h1 {
             color: black;
             text-align: center;
         }
@@ -127,11 +127,11 @@
         }
 
 
-       
+
 
         .article {
             /* background-color: teal; */
-           
+
 
         }
 
@@ -146,18 +146,76 @@
                 visibility: hidden;
             }
 
+            article header {
+                visibility: hidden;
+                display: none;
+                height: 0;
+            }
+
+            .nav-mobile * {
+                backdrop-filter: unset;
+            }
+
             .nav-mobile {
                 display: flex;
                 visibility: visible;
                 width: 100%;
-                height: 10%;
+                height: 50%;
+                padding: 1%;
+                backdrop-filter: unset;
                 transition: height 2s;
+                background-color: white;
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+                text-align: center;
+                transition: opacity 1.5s, height 1s;
+
             }
 
+            .mobile-link-container {
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+                text-align: center;
+                transition: opacity 1.5s, height 1s;
+
+            }
+
+            .nav-mobile h1 {
+                backdrop-filter: unset;
+            }
+
+            .mobile-svg img {
+                max-width: 20%;
+                margin-top: 15%;
+            }
+
+            .mobile-link-container a {
+                backdrop-filter: unset;
+                padding: 1.5%;
+                font-size: 1.5em;
+                color: #455052cc;
+                text-decoration: none;
+                border-top: 1px solid #45505279;
+                width: 75%;
+                margin: auto;
+                transition: opacity 1.5s, height 1s;
+
+            }
+            .nav-mobile.nav-collapsed .mobile-link-container a{
+                opacity: 0;
+                height: 0%;
+            }
+            .nav-mobile a:nth-child(4) {
+                margin-bottom: 12%;
+            }
+            .article{
+                min-height: 80%;
+            }
             main {
-                grid-template-rows: minmax(auto, 2fr) repeat(4, minmax(auto, 6fr));
+                grid-template-rows: repeat(4, minmax(auto, 6fr));
                 grid-template-areas:
-                    "header header header header header header"
                     "main main main main main main"
                     "main main main main main main"
                     "main main main main main main"
@@ -166,7 +224,12 @@
             }
 
             .nav-mobile.nav-collapsed {
-                height: 50%;
+                height: 30%;
+            }
+
+            .nav-collapsed .mobile-link-container {
+                height: 0px;
+                opacity: 0;
             }
         }
     </style>
@@ -175,8 +238,6 @@
 <body>
 
     <main>
-        <header>
-        </header>
         <nav>
             <section class="title">
                 <img src="./heart_outline.svg" alt="">
@@ -190,23 +251,54 @@
         </nav>
         <article>
             <header>
+                lol
             </header>
-            <nav class="nav-mobile">
-                jello
+            <nav class="nav-mobile nav-collapsed">
+                <div class="mobile-svg">
+                    <img src="./heart_outline.svg" alt="">
+                </div>
+                <h1 id="#mobile-header">Mid-Columbia Transfer Services &#9660;</h1>
+                <div class="mobile-link-container">
+                    <a href="" class="services">Our Services</a>
+                    <a href="" class="contact">Contact Us</a>
+                    <a href="" class="about">About Us</a>
+                </div>
             </nav>
             <section class="article">
-                stugg
+                
             </section>
             <footer>
-                Jello
+                
             </footer>
         </article>
     </main>
 
     <script>
-        setInterval(() => {
-            document.getElementsByClassName("nav-mobile")[0].classList.toggle("nav-collapsed")
-        }, 5000)
+        let collapsed = true;
+        document.querySelectorAll(".nav-mobile *").forEach(element => {
+            element.addEventListener("touchend", (e) => {
+                if (!collapsed) {
+                    document.getElementsByClassName("nav-mobile")[0].classList.add("nav-collapsed")
+                    collapsed = true;
+                } else {
+                    document.getElementsByClassName("nav-mobile")[0].classList.remove("nav-collapsed")
+                    collapsed = false;
+                }
+                return e.preventDefault();
+            }, false);
+            element.onclick = function (e) {
+                if (!collapsed) {
+                    document.getElementsByClassName("nav-mobile")[0].classList.add("nav-collapsed")
+                    collapsed = true;
+                } else {
+                    document.getElementsByClassName("nav-mobile")[0].classList.remove("nav-collapsed")
+                    collapsed = false;
+                }
+                return e.preventDefault();
+            };
+        });
+
+
     </script>
 </body>
 

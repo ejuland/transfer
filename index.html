@@ -39,6 +39,9 @@
             transition: grid-template-rows 5s;
         }
 
+        * {
+            overflow-x: hidden !important;
+        }
 
         nav {
             background-color: #FDFAF6;
@@ -156,7 +159,7 @@
             .nav-mobile * {
                 backdrop-filter: unset;
                 -webkit-backdrop-filter: unset;
-                
+
             }
 
             .nav-mobile {
@@ -209,16 +212,20 @@
                 transition: opacity 1.5s, height 1s;
 
             }
-            .nav-mobile.nav-collapsed .mobile-link-container a{
+
+            .nav-mobile.nav-collapsed .mobile-link-container a {
                 opacity: 0;
                 height: 0%;
             }
+
             .nav-mobile a:nth-child(4) {
                 margin-bottom: 12%;
             }
-            .article{
+
+            .article {
                 min-height: 80%;
             }
+
             main {
                 grid-template-rows: repeat(4, minmax(auto, 6fr));
                 grid-template-areas:
@@ -271,10 +278,10 @@
                 </div>
             </nav>
             <section class="article">
-                
+
             </section>
             <footer>
-                
+
             </footer>
         </article>
     </main>

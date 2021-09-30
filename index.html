@@ -6,13 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Transfer Services</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&display=swap');
 
-        * {
-            font-family: 'Playfair Display SC', monospace;
-        }
 
         html,
         body {
@@ -20,139 +18,155 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            font-family: 'Questrial', sans-serif;
+
         }
 
-        body {
-            background-color: #CCCCCC;
-            background-image: url("https://images.unsplash.com/photo-1560493676-04071c5f467b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            backdrop-filter: saturate(0.9) blur(3px);
-            -webkit-backdrop-filter:saturate(.9) blur(3px); 
+        main {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+            display: grid;
+            grid-template-rows: minmax(auto, 6fr);
+            grid-template-columns: repeat(6, minmax(auto, 1fr));
+            grid-template-areas:
+                "sidebar main main main main main"
+            ;
+
+            transition: grid-template-rows 5s;
         }
 
-        .path :nth-child(1) {
-            stroke: url(#linearGradient1433);
-        }
-
-        .path .filled:nth-child(1) {
-            fill: #ad5e5e;
-        }
-
-        .path .filled {
-            fill: #800000;
-        }
-
-
-        #heading1 * {
-            color: #ccccccf0;
-            text-shadow: 2px 2px 2px black;
-        }
-
+        
         nav {
-            font-size: 2em;
+            background-color: #FDFAF6;
+            grid-area: sidebar;
+            border-right: 2px solid #45505265;
+            /* box-shadow: 0px 1px 0px 1px black; */
+
+        }
+
+        nav .link-container {
             display: flex;
-            justify-content: space-evenly;
+            flex-direction: column;
+            justify-content: space-around;
+            max-height: 50%;
+            margin: 5%;
+        }
+
+        nav .link-container a {
+            max-width: 75%;
             margin: auto;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            border-bottom: 3px solid transparent;
-
-        }
-
-        div:hover {
-            color: red;
-        }
-
-
-        h1 {
             text-align: center;
-            font-weight: bold;
-            font-size: 3em;
-            color: #ccccccf0;
-            text-shadow: 2px 2px 2px black;
+            /* font-weight: bold; */
+            font-size: 1.5em;
+            color: #455052cc;
+            text-decoration: none;
+            /* border-bottom:3px solid white; */
+            margin-bottom: 30%;
+            border-bottom: 3px solid transparent;
+            transition: border-bottom 2s;
+
         }
 
-        body {
+        .link-container a:hover {
+            border-bottom: 2px solid #8A887D;
+        }
+
+        article {
+            grid-area: main;
+            background-color: gray;
+            overflow-y: auto;
+            background-image: url("https://images.unsplash.com/photo-1560493676-04071c5f467b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80");
+            background-position: center;
+            background-size: cover;
+            min-height: 90%;
+            display: block;
+        }
+
+        article * {
+            backdrop-filter: blur(5px) saturate(.9) grayscale(20%) brightness(62%);
+        }
+
+        header {
+            grid-area: header;
+            font-family: 'Playfair Display SC', monospace;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            height: 100%;
             display: flex;
             justify-content: center;
             flex-direction: column;
         }
 
-        .svg-container {
-            width: 100%;
+        nav h1{
+            color: black;
+            text-align: center;
+        }
+
+
+        footer {
+            grid-area: footer;
+        }
+
+        .nav-mobile {
+            display: none;
+            visibility: hidden;
+            height: 0;
+        }
+
+        .title {
             display: flex;
             justify-content: center;
-            flex-direction: row;
-            padding: 0;
+            flex-direction: column;
+            margin-bottom: 20%;
+            margin-top: 15%;
         }
 
-        img {
-            max-width: 25%;
+
+       
+
+        .article {
+            /* background-color: teal; */
+           
+
+        }
+
+        .title img {
+            max-width: 75%;
             margin: auto;
-            padding: 0;
-            background-color: #CCCCCCCC;
         }
 
-        a:hover {
-            border-bottom: 3px solid rgba(255, 255, 255, 0.315);
-        }
-
-        @media screen and (max-width: 750px) {
-
-            body {
-                backdrop-filter: saturate(2) blur(3px);
-                -webkit-backdrop-filter:saturate(2) blur(8px); 
-            }
-
+        @media screen and (max-width: 500px) {
             nav {
-                flex-direction: column;
-                margin: auto;
-                text-align: center;
-                backdrop-filter: blur(20px);
+                display: none;
+                visibility: hidden;
             }
 
-            #heading1 h1 {
-
-                color: #cccccc;
-                border-radius: 5px;
+            .nav-mobile {
+                display: flex;
+                visibility: visible;
+                width: 100%;
+                height: 10%;
+                transition: height 2s;
             }
 
-            nav a {
-                width: 30%;
-                margin: auto;
-                margin-bottom: 5%;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-
-            body {
-                backdrop-filter: saturate(2) blur(8px);
-                -webkit-backdrop-filter:saturate(2) blur(8px); 
+            main {
+                grid-template-rows: minmax(auto, 2fr) repeat(4, minmax(auto, 6fr));
+                grid-template-areas:
+                    "header header header header header header"
+                    "main main main main main main"
+                    "main main main main main main"
+                    "main main main main main main"
+                    "main main main main main main"
+                ;
             }
 
-            nav {
-                flex-direction: column;
-                margin: auto;
-                text-align: center;
-                backdrop-filter: blur(20px);
-            }
-
-            #heading1 h1 {
-                font-size: 30px;
-                color: #cccccc;
-            }
-
-            nav a {
-                width: 30%;
-                font-size: 24px;
-                margin: auto;
-                margin-bottom: 5%;
+            .nav-mobile.nav-collapsed {
+                height: 50%;
             }
         }
     </style>
@@ -160,23 +174,39 @@
 
 <body>
 
-    <header id="heading1">
-        <div class="svg-container">
-            <img src="./heart.svg" alt="" srcset="">
-        </div>
-        <h1>Mid-Columbia Transfer Plus</h1>
-        <nav class="link-container">
-            <a href="" id="" class="services">Our Services</a>
-            <a href="" id="" class="contact">Contact Us</a>
-            <a href="" id="" class="about">About Us</a>
+    <main>
+        <header>
+        </header>
+        <nav>
+            <section class="title">
+                <img src="./heart_outline.svg" alt="">
+                <h1>Mid-Columbia Transfer Services</h1>
+            </section>
+            <section class="link-container">
+                <a href="" class="services">Our Services</a>
+                <a href="" class="contact">Contact Us</a>
+                <a href="" class="about">About Us</a>
+            </section>
         </nav>
-    </header>
-
-
-
+        <article>
+            <header>
+            </header>
+            <nav class="nav-mobile">
+                jello
+            </nav>
+            <section class="article">
+                stugg
+            </section>
+            <footer>
+                Jello
+            </footer>
+        </article>
+    </main>
 
     <script>
-
+        setInterval(() => {
+            document.getElementsByClassName("nav-mobile")[0].classList.toggle("nav-collapsed")
+        }, 5000)
     </script>
 </body>
 
